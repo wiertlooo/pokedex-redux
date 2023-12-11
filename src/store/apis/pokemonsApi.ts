@@ -28,16 +28,16 @@ const pokemonsApi = createApi({
           method: "GET",
         }),
       }),
-      fetchPokemonById: builder.query<DetailedPokemon, number>({
-        query: (id) => ({
-          url: `/pokemon/${id}`,
+      fetchPokemonByName: builder.query<DetailedPokemon, string>({
+        query: (name) => ({
+          url: `/pokemon/${name}`,
           method: "GET",
         }),
       }),
       fetchPokemonsForPage: builder.query<FetchedPokemons, number>({
         query: (pageNumber) => ({
           //(pageNumber-1) * 20 - if page number is 1 it will fetch data for id's 1-19
-          url: `/pokemon?limit=20&offset=${(pageNumber - 1) * 20}`,
+          url: `/pokemon?limit=24&offset=${(pageNumber - 1) * 24}`,
           method: "GET",
         }),
       }),
@@ -47,7 +47,7 @@ const pokemonsApi = createApi({
 
 export const {
   useFetchPokemonsQuery,
-  useFetchPokemonByIdQuery,
+  useFetchPokemonByNameQuery,
   useFetchPokemonsForPageQuery,
 } = pokemonsApi;
 

@@ -3,8 +3,13 @@ import { useFetchPokemonsForPageQuery } from "../store";
 import PokemonCard from "./PokemonCard";
 
 function PokemonList() {
-  const { data, error, isLoading } = useFetchPokemonsForPageQuery(1);
+  const { data, error, isLoading } = useFetchPokemonsForPageQuery(4);
   let content;
+  const containerStyle: React.CSSProperties = {
+    display: "flex",
+    justifyContent: "center",
+    flexWrap: "wrap",
+  };
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -13,16 +18,15 @@ function PokemonList() {
   }
 
   if (data) {
-    content = data.results.map((pokemon, index: number) => {
+    content = data.results.map((pokemon) => {
       return (
         <div key={pokemon.name}>
-          {pokemon.name}
-          <PokemonCard pokemonId={index + 1} />
+          <PokemonCard name={pokemon.name} />
         </div>
       );
     });
   }
-  return <div>{content}</div>;
+  return <div style={containerStyle}>{content}</div>;
 }
 
 export default PokemonList;

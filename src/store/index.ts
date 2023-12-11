@@ -15,6 +15,6 @@ setupListeners(store.dispatch);
 
 export const {
   useFetchPokemonsQuery,
-  useFetchPokemonByIdQuery,
+  useFetchPokemonByNameQuery,
   useFetchPokemonsForPageQuery,
 } = pokemonsApi;
