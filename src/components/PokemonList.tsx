@@ -2,6 +2,7 @@ import React from "react";
 import { useFetchPokemonsForPageQuery } from "../store";
 import PokemonCard from "./PokemonCard";
 import { useParams } from "react-router-dom";
+import Pagination from "./Pagination";
 
 interface PageNumber {
   page?: string;
@@ -42,7 +43,15 @@ function PokemonList() {
       );
     });
   }
-  return <div className="flex flex-wrap w-9/12 mx-auto">{content}</div>;
+
+  return (
+    <>
+      <div className="flex flex-wrap w-9/12 mx-auto space-between">
+        {content}
+      </div>
+      <Pagination currentPage={pageNumber} />
+    </>
+  );
 }
 
 export default PokemonList;
