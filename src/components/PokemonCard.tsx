@@ -1,16 +1,15 @@
 import React from "react";
 import { useFetchPokemonByNameQuery } from "../store";
+import { useNavigate } from "react-router-dom";
 
 function PokemonCard({ name }: { name: string }) {
   const { data: pokemon, isFetching, error } = useFetchPokemonByNameQuery(name);
 
-  const cardStyle: React.CSSProperties = {
-    width: "18rem",
-    margin: "3px",
-  };
+  const navigate = useNavigate();
 
   let photoUrl;
   let pokemonName;
+  let pokeId;
 
   if (error) {
     return <div>error</div>;
@@ -22,12 +21,20 @@ function PokemonCard({ name }: { name: string }) {
     photoUrl = pokemon.sprites.front_default;
     //Changing first letter to capital
     pokemonName = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
+    pokeId = pokemon.id;
   }
   return (
-    <div className="card" style={cardStyle}>
-      <img className="card-img-top" src={photoUrl} alt={pokemonName} />
-      <div className="card-body">
-        <h5 className="card-title">{pokemonName}</h5>
+    <div
+      onClick={() => {
+        navigate(`/pokemon/${name}`);
+      }}
+      className="flex flex-col border-2 rounded m-5 cursor-pointer"
+    >
+      <img className="h-48 w-68" src={photoUrl} alt={pokemonName} />
+      <div className="flex justify-center">
+        <h5 className="text-lg font-bold mb-4">
+          #{pokeId} {pokemonName}
+        </h5>
       </div>
     </div>
   );

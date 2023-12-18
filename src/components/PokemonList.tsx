@@ -1,15 +1,31 @@
 import React from "react";
 import { useFetchPokemonsForPageQuery } from "../store";
 import PokemonCard from "./PokemonCard";
+import { useParams } from "react-router-dom";
+
+interface PageNumber {
+  page?: string;
+  [key: string]: string | undefined;
+}
 
 function PokemonList() {
-  const { data, error, isLoading } = useFetchPokemonsForPageQuery(4);
   let content;
-  const containerStyle: React.CSSProperties = {
-    display: "flex",
-    justifyContent: "center",
-    flexWrap: "wrap",
-  };
+
+  const { page } = useParams<PageNumber>();
+  let pageNumber: number | undefined;
+
+  if (page) {
+    const parsedPage = parseInt(page, 10);
+    if (!isNaN(parsedPage)) {
+      pageNumber = parsedPage;
+    }
+  }
+  if (pageNumber === undefined || pageNumber > 30) {
+    pageNumber = 1;
+  }
+
+  const { data, error, isLoading } = useFetchPokemonsForPageQuery(pageNumber);
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -26,7 +42,7 @@ function PokemonList() {
       );
     });
   }
-  return <div style={containerStyle}>{content}</div>;
+  return <div className="flex flex-wrap w-9/12 mx-auto">{content}</div>;
 }
 
 export default PokemonList;

@@ -4,11 +4,18 @@ interface Pokemon {
   name: string;
 }
 
+export interface PokemonType {
+  type: {
+    name: string;
+  };
+}
+
 interface DetailedPokemon extends Pokemon {
   id: number;
   sprites: {
     front_default: string;
   };
+  types: PokemonType[];
 }
 
 interface FetchedPokemons {
