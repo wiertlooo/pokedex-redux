@@ -18,6 +18,17 @@ interface DetailedPokemon extends Pokemon {
   types: PokemonType[];
 }
 
+interface Description {
+  description: string;
+}
+
+interface PokemonCharacteristics {
+  descriptions: Description[];
+  highest_stat: {
+    name: string;
+  };
+}
+
 interface FetchedPokemons {
   results: Pokemon[];
 }
@@ -48,6 +59,15 @@ const pokemonsApi = createApi({
           method: "GET",
         }),
       }),
+      fetchPokemonCharacteristics: builder.query<
+        PokemonCharacteristics,
+        number
+      >({
+        query: (pokemonId) => ({
+          url: `/characteristic/${pokemonId}`,
+          method: "GET",
+        }),
+      }),
     };
   },
 });
@@ -56,6 +76,7 @@ export const {
   useFetchPokemonsQuery,
   useFetchPokemonByNameQuery,
   useFetchPokemonsForPageQuery,
+  useFetchPokemonCharacteristicsQuery,
 } = pokemonsApi;
 
 export { pokemonsApi };

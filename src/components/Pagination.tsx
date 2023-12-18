@@ -1,13 +1,4 @@
-import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const lessThan30 = (currentPage: number): number => {
-  if (currentPage + 4 > 30) {
-    return 30;
-  } else {
-    return currentPage + 4;
-  }
-};
 
 function Pagination({ currentPage }: { currentPage: number }) {
   const navigate = useNavigate();

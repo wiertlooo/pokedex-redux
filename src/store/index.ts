@@ -17,4 +17,5 @@ export const {
   useFetchPokemonsQuery,
   useFetchPokemonByNameQuery,
   useFetchPokemonsForPageQuery,
+  useFetchPokemonCharacteristicsQuery,
 } = pokemonsApi;

@@ -7,9 +7,9 @@ function PokemonCard({ name }: { name: string }) {
 
   const navigate = useNavigate();
 
-  let photoUrl;
-  let pokemonName;
-  let pokeId;
+  let photoUrl: string = "";
+  let pokemonName: string = "";
+  let pokeId: number = 0;
 
   if (error) {
     return <div>error</div>;
