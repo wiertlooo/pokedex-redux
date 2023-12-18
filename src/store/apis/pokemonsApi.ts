@@ -10,12 +10,28 @@ export interface PokemonType {
   };
 }
 
+export interface PokemonMove {
+  move: {
+    name: string;
+  };
+  version_group_details: {
+    level_learned_at: number;
+    move_learn_method: {
+      name: string;
+    };
+    version_group: {
+      name: string;
+    };
+  }[];
+}
+
 interface DetailedPokemon extends Pokemon {
   id: number;
   sprites: {
     front_default: string;
   };
   types: PokemonType[];
+  moves: PokemonMove[];
 }
 
 interface Description {

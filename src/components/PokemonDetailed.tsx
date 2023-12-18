@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useFetchPokemonByNameQuery } from "../store";
-import { PokemonType } from "../store/apis/pokemonsApi";
+import { PokemonMove, PokemonType } from "../store/apis/pokemonsApi";
 import PokemonTypeContainer from "./PokemonTypeContainer";
 import PokemonCharacteristic from "./PokemonCharacteristic";
 
@@ -15,6 +15,7 @@ function PokemonDetailed() {
   let pokeName: string;
   let pokeTypes: PokemonType[] = [];
   let pokeId: number = 0;
+  let pokeMoves: PokemonMove[] = [];
 
   const { name } = useParams<PokeName>();
   if (name) {
@@ -32,6 +33,8 @@ function PokemonDetailed() {
     pokeImage = pokemon.sprites.front_default;
     pokeTypes = pokemon.types;
     pokeId = pokemon.id;
+    pokeMoves = pokemon.moves;
+    console.log(pokeMoves);
   }
 
   return (
@@ -46,6 +49,26 @@ function PokemonDetailed() {
         })}
       </div>
       <PokemonCharacteristic pokeId={pokeId} />
+      <table>
+        <thead>
+          <tr>
+            <th>NUMBER</th>
+            <th>MOVE</th>
+            <th>LVL</th>
+            <th>LEARNED</th>
+          </tr>
+          {pokeMoves.map((move: PokemonMove, index: number) => {
+            return (
+              <tr key={move.move.name}>
+                <td>{index + 1}</td>
+                <td>{move.move.name}</td>
+                <td>{move.version_group_details[0].level_learned_at}</td>
+                <td>{move.version_group_details[0].move_learn_method.name}</td>
+              </tr>
+            );
+          })}
+        </thead>
+      </table>
     </div>
   );
 }
