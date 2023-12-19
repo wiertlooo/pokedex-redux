@@ -5,7 +5,7 @@ function PokemonNav() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-red-500">
+    <div className="bg-black text-white font-bold mb-10">
       <div className="ml-24 flex flex-row h-20 items-center">
         <div className="m-5">WIERT-DEX</div>
         <div

@@ -10,12 +10,12 @@ function Pagination({ currentPage }: { currentPage: number }) {
   }
 
   return (
-    <div className="flex flex-row flex-center justify-center">
+    <div className="flex flex-row flex-center justify-center text-center font-semibold my-10">
       {pages.map((pageNumber) => {
         if (pageNumber === currentPage) {
           return (
             <div
-              className="cursor-pointer border p-1 font-bold"
+              className="cursor-pointer border border-gray-700 p-1 font-bold w-8 bg-black text-white"
               key={pageNumber}
               onClick={() => navigate(`/pokemons/${pageNumber}`)}
             >
@@ -25,7 +25,7 @@ function Pagination({ currentPage }: { currentPage: number }) {
         }
         return (
           <div
-            className="cursor-pointer border p-1"
+            className="cursor-pointer border border-gray-700 p-1 w-8 bg-black text-white"
             key={pageNumber}
             onClick={() => navigate(`/pokemons/${pageNumber}`)}
           >

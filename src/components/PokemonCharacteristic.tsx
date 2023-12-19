@@ -20,9 +20,13 @@ function PokemonCharacteristic({ pokeId }: { pokeId: number }) {
   }
 
   return (
-    <div>
-      <div>{description}</div>
-      <div>{highestStat}</div>
+    <div className="text-center">
+      {description && <div className="font-semibold my-2">{description}</div>}
+      {highestStat && (
+        <div className="font-semibold my-2">
+          Highest statistic: {highestStat}
+        </div>
+      )}
     </div>
   );
 }

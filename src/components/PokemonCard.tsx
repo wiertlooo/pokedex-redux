@@ -28,7 +28,7 @@ function PokemonCard({ name }: { name: string }) {
       onClick={() => {
         navigate(`/pokemon/${name}`);
       }}
-      className="flex flex-col border-2 rounded m-5 cursor-pointer"
+      className="flex flex-col border-2 border-gray-700 rounded-lg m-5 cursor-pointer z-10 bg-black text-white"
     >
       <img className="h-48 w-68" src={photoUrl} alt={pokemonName} />
       <div className="flex justify-center">
