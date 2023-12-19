@@ -1,9 +1,14 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useFetchPokemonByNameQuery } from "../store";
-import { PokemonMove, PokemonType } from "../store/apis/pokemonsApi";
+import {
+  PokemonMove,
+  PokemonStat,
+  PokemonType,
+} from "../store/apis/pokemonsApi";
 import PokemonDetailedCard from "./PokemonDetailedCard";
 import PokemonDetailedMoveTable from "./PokemonDetailedMoveTable";
+import PokemonDetailedStatsCard from "./PokemonDetailedStatsCard";
 
 interface PokeName {
   name?: string;
@@ -17,6 +22,7 @@ function PokemonDetailed() {
   let pokeId: number = 0;
   let pokeMoves: PokemonMove[] = [];
   let pokeImageShiny: string = "";
+  let pokeStats: PokemonStat[] = [];
 
   const { name } = useParams<PokeName>();
   if (name) {
@@ -36,17 +42,21 @@ function PokemonDetailed() {
     pokeId = pokemon.id;
     pokeMoves = pokemon.moves;
     pokeImageShiny = pokemon.sprites.front_shiny;
+    pokeStats = pokemon.stats;
   }
 
   return (
     <div className="flex flex-col items-center">
-      <PokemonDetailedCard
-        pokeImage={pokeImage}
-        pokeImageShiny={pokeImageShiny}
-        pokeName={pokeName}
-        pokeTypes={pokeTypes}
-        pokeId={pokeId}
-      />
+      <div className="flex flex-row items-center">
+        <PokemonDetailedCard
+          pokeImage={pokeImage}
+          pokeImageShiny={pokeImageShiny}
+          pokeName={pokeName}
+          pokeTypes={pokeTypes}
+          pokeId={pokeId}
+        />
+        <PokemonDetailedStatsCard pokeStats={pokeStats} />
+      </div>
       <PokemonDetailedMoveTable pokeMoves={pokeMoves} />
     </div>
   );

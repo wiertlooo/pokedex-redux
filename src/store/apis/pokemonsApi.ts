@@ -24,6 +24,12 @@ export interface PokemonMove {
     };
   }[];
 }
+export interface PokemonStat {
+  base_stat: number;
+  stat: {
+    name: string;
+  };
+}
 
 interface DetailedPokemon extends Pokemon {
   id: number;
@@ -33,6 +39,7 @@ interface DetailedPokemon extends Pokemon {
   };
   types: PokemonType[];
   moves: PokemonMove[];
+  stats: PokemonStat[];
 }
 
 interface Description {
