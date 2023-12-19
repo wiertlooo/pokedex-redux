@@ -20,7 +20,7 @@ function PokemonDetailedCard({
   const [visibleImage, setVisibleImage] = useState<string>(pokeImage);
 
   return (
-    <div className="flex flex-row items-center border border-gray-700 rounded-md bg-black text-white">
+    <div className="flex flex-row items-center border border-gray-700 rounded-md bg-black text-white m-2">
       <div className="flex flex-col items-center pl-8">
         <div className="flex flex-row">
           <button

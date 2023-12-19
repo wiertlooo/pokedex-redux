@@ -3,7 +3,6 @@ import { useFetchPokemonCharacteristicsQuery } from "../store";
 
 function PokemonCharacteristic({ pokeId }: { pokeId: number }) {
   let description: string | React.ReactNode;
-  let highestStat: string | React.ReactNode;
 
   const { data, isFetching, error } =
     useFetchPokemonCharacteristicsQuery(pokeId);
