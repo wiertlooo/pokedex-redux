@@ -22,6 +22,7 @@ export const {
   useFetchPokemonByNameQuery,
   useFetchPokemonsForPageQuery,
   useFetchPokemonCharacteristicsQuery,
+  useFetchPokemonByIdQuery,
 } = pokemonsApi;
 
 export const { useFetchMoveQuery } = movesApi;

@@ -76,6 +76,12 @@ const pokemonsApi = createApi({
           method: "GET",
         }),
       }),
+      fetchPokemonById: builder.query<DetailedPokemon, number>({
+        query: (id) => ({
+          url: `/pokemon/${id}`,
+          method: "GET",
+        }),
+      }),
       fetchPokemonsForPage: builder.query<FetchedPokemons, number>({
         query: (pageNumber) => ({
           //(pageNumber-1) * 20 - if page number is 1 it will fetch data for id's 1-19
@@ -101,6 +107,7 @@ export const {
   useFetchPokemonByNameQuery,
   useFetchPokemonsForPageQuery,
   useFetchPokemonCharacteristicsQuery,
+  useFetchPokemonByIdQuery,
 } = pokemonsApi;
 
 export { pokemonsApi };

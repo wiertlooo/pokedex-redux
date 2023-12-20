@@ -10,7 +10,7 @@ function App() {
       <PokemonNav />
       <Routes>
         <Route path="/pokemons/:page" element={<PokemonList />} />
-        <Route path="/pokemon/:name" element={<PokemonDetailed />} />
+        <Route path="/pokemon/:nameOrId" element={<PokemonDetailed />} />
       </Routes>
     </>
   );

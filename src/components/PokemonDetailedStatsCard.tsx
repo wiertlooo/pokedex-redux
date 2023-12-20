@@ -1,8 +1,6 @@
 import { PokemonStat } from "../store/apis/pokemonsApi";
 
 function PokemonDetailedStatsCard({ pokeStats }: { pokeStats: PokemonStat[] }) {
-  console.log(pokeStats);
-
   return (
     <div className="flex flex-col p-4 bg-black border-2 rounded-md border-gray-700 text-white font-bold w-96 m-2">
       <div className="my-2 mx-auto">STATS</div>
